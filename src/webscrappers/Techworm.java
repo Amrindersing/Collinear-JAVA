@@ -1,6 +1,7 @@
 package webscrappers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,12 +13,12 @@ import DbHelper.Article;
 public class Techworm {
 
 	private static final String URL_PATH = "http://www.techworm.net/";
-	private static Article article;
+
 	private static String data;
 	private static Document webpage;
 	private static Elements articles;
 	
-	public static String activateScrapper() throws IOException
+	public static ArrayList<Article> activateScrapper() throws IOException
 	{
 		
 		webpage = Jsoup.connect(URL_PATH).get();
@@ -25,9 +26,17 @@ public class Techworm {
 		articles = webpage.getElementsByTag("article");
 		
 		
+		ArrayList<Article> ar = new ArrayList<>();
 		
-		for (Element article : articles) {
-			System.out.println(article);
+		for (Element data : articles) {
+
+			String title = null;
+			String image = null;
+			String link = null;
+			
+			Article article = new Article(title, image, link);
+			ar.add(article);
+			
 		}
 		
 		return null;
