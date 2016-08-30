@@ -18,6 +18,7 @@ public class Techworm {
 	private static Document webpage;
 	private static Elements articles;
 	
+	
 	public static ArrayList<Article> activateScrapper() throws IOException
 	{
 		
@@ -27,10 +28,14 @@ public class Techworm {
 		
 		
 		ArrayList<Article> ar = new ArrayList<>();
+		Elements temp;
+		
 		
 		for (Element data : articles) {
 
-			String title = null;
+			temp = data.getElementsByClass("excerpt");
+			String title = temp.text();
+			
 			String image = null;
 			String link = null;
 			
@@ -39,7 +44,7 @@ public class Techworm {
 			
 		}
 		
-		return null;
+		return ar;
 		
 	}
 	
