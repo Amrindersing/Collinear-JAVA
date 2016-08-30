@@ -35,13 +35,18 @@ public class Techworm {
 
 			temp = data.getElementsByClass("excerpt");
 			String title = temp.text();
+			System.out.println(title);
 			
-			String image = null;
+			temp = data.select("a > img");
+			System.out.println(temp.attr("src"));
+			String image = temp.attr("src");
+			
 			String link = null;
 			
 			Article article = new Article(title, image, link);
 			ar.add(article);
 			
+			break;
 		}
 		
 		return ar;
