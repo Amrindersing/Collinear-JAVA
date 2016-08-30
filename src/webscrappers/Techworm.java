@@ -37,16 +37,18 @@ public class Techworm {
 			String title = temp.text();
 			System.out.println(title);
 			
-			temp = data.select("a > img");
-			System.out.println(temp.attr("src"));
-			String image = temp.attr("src");
+			temp = data.select("a[title] > img");
+			System.out.println(temp.attr("data-src"));
+			String image = temp.attr("data-src");
 			
-			String link = null;
+			String link = data.select("a[title]").attr("href");
+			System.out.println(link);
+			
+			System.out.println("---------------------------------------------");
 			
 			Article article = new Article(title, image, link);
 			ar.add(article);
 			
-			break;
 		}
 		
 		return ar;
