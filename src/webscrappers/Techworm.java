@@ -28,7 +28,6 @@ public class Techworm {
 		
 		for (Element article : articles) {
 			System.out.println(article);
-			break;
 		}
 		
 		return null;
